@@ -3,7 +3,7 @@
 #### The J2EE Stack
 ![J2EE](https://github.com/StillSomehowSane/javap1-beans-and-json/blob/main/J2EE.PNG)
 
-#### POJO vs Beans
+#### Business Layer: POJO vs Beans
 
 **Example of a POJO**
 ``` java
