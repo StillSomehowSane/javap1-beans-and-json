@@ -1,5 +1,8 @@
 ## A starter program into J2EE and its various concepts.
 
+#### The J2EE Stack
+![J2EE](https://github.com/StillSomehowSane/javap1-beans-and-json/blob/main/J2EE.PNG)
+
 #### POJO vs Beans
 
 **Example of a POJO**
