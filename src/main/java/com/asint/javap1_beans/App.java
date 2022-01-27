@@ -2,9 +2,13 @@ package com.asint.javap1_beans;
 
 import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.beanutils.PropertyUtils;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Hello world!
@@ -12,27 +16,33 @@ import org.apache.commons.beanutils.PropertyUtils;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main(String[] args)
     {
         
-        PropertyDescriptor[] names = PropertyUtils.getPropertyDescriptors(TypicalPOJOPerson.class);
+        Animal doggie = new Animal();
         
-        List<String> dispNames = new ArrayList<String>();
+        doggie.setId(1);
+        doggie.setName("Pupper");
+        doggie.setBreed("Husky");
+        doggie.setAge(2);
         
-        for (PropertyDescriptor name: names) {
-        	dispNames.add(name.getName());
-        }
+        Animal doggo = new Animal();
         
-        System.out.println(dispNames);
+        doggo.setId(2);
+        doggo.setName("Missy");
+        doggo.setBreed("Golden Retriever");
+        doggo.setAge(1);
         
-        names = PropertyUtils.getPropertyDescriptors(TypicalBeanPerson.class);
+        ObjectMapper mapper = new ObjectMapper();
         
-        dispNames = new ArrayList<String>();
+        Animal[] animals = { doggie, doggo };
         
-        for (PropertyDescriptor name: names) {
-        	dispNames.add(name.getName());
-        }
-        
-        System.out.println(dispNames);
+        try {
+			String animalsJsonified = mapper.writeValueAsString(animals);
+			
+			 System.out.println(animalsJsonified);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
     }
 }

@@ -2,42 +2,50 @@ package com.asint.javap1_beans;
 
 import java.io.Serializable;
 
-public class TypicalBeanPerson implements Serializable {
+public class Animal implements Serializable {
 
 	/**
-	 * UID
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	
 	private String name;
+	
+	private String breed;
+	
+	private Integer age;
 
-	/**
-	 * @return the id
-	 */
 	public Integer getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the name
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getBreed() {
+		return breed;
+	}
+
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 }

@@ -3,7 +3,7 @@
 #### The J2EE Stack
 ![The J2EE Stack](https://github.com/StillSomehowSane/javap1-beans-and-json/blob/main/images/J2EE.PNG)
 
-#### Business Layer: POJO vs Beans
+### Business Layer: POJO vs Beans
 
 **Example of a POJO**
 ``` java
@@ -64,7 +64,7 @@ public class TypicalBeanPerson implements Serializable {
 
 - https://www.geeksforgeeks.org/pojo-vs-java-beans/
 
-#### Business Layer: The Maven Build System
+### Business Layer: The Maven Build System
 
 **Example of a pom.xml**
 ``` xml
@@ -164,7 +164,7 @@ public class TypicalBeanPerson implements Serializable {
 </project>
 ```
 
-#### Typical Maven Project Structure
+### Typical Maven Project Structure
 We prefer to use the Maven Quickstart Archetype from 
 
 **org.apache.maven.archetypes** **maven-archetype-quickstart**
@@ -182,3 +182,128 @@ Further the JRE System Libraries and Maven Dependencies will have the source jar
 ##### Links
 - https://www.baeldung.com/maven
 - https://mvnrepository.com/search?q=spring+boot
+
+### Business Layer: Manipulating JSON using the Jackson Library
+
+Pull Jackson-Databind in as a dependency in our pom.xml file
+``` xml
+<dependency>
+  <groupId>com.fasterxml.jackson.core</groupId>
+  <artifactId>jackson-databind</artifactId>
+  <version>2.13.1</version>
+</dependency>
+```
+
+Basic Usage of the Object Mapper
+``` java
+public class Animal implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
+	
+	private String name;
+	
+	private String breed;
+	
+	private Integer age;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBreed() {
+		return breed;
+	}
+
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+}
+```
+
+``` java
+public class App 
+{
+    public static void main(String[] args)
+    {
+        
+        Animal doggie = new Animal();
+        
+        doggie.setId(1);
+        doggie.setName("Pupper");
+        doggie.setBreed("Husky");
+        doggie.setAge(2);
+        
+        ObjectMapper mapper = new ObjectMapper();
+        
+        try {
+			String animalJsonified = mapper.writeValueAsString(doggie);
+			
+			 System.out.println(animalJsonified);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+    }
+}
+```
+
+Creating a json array with Jackson
+``` java
+public class App 
+{
+    public static void main(String[] args)
+    {
+        
+        Animal doggie = new Animal();
+        
+        doggie.setId(1);
+        doggie.setName("Pupper");
+        doggie.setBreed("Husky");
+        doggie.setAge(2);
+        
+        Animal doggo = new Animal();
+        
+        doggo.setId(2);
+        doggo.setName("Missy");
+        doggo.setBreed("Golden Retriever");
+        doggo.setAge(1);
+        
+        ObjectMapper mapper = new ObjectMapper();
+        
+        Animal[] animals = { doggie, doggo };
+        
+        try {
+			String animalsJsonified = 
+              mapper.writeValueAsString(animals);
+			
+			 System.out.println(animalsJsonified);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+    }
+}
+```
