@@ -1,7 +1,7 @@
 ## A starter program into J2EE and its various concepts.
 
 #### The J2EE Stack
-![The J2EE Stack](https://github.com/StillSomehowSane/javap1-beans-and-json/blob/main/J2EE.PNG)
+![The J2EE Stack](https://github.com/StillSomehowSane/javap1-beans-and-json/blob/main/images/J2EE.PNG)
 
 #### Business Layer: POJO vs Beans
 
@@ -163,6 +163,21 @@ public class TypicalBeanPerson implements Serializable {
   </build>
 </project>
 ```
+
+#### Typical Maven Project Structure
+We prefer to use the Maven Quickstart Archetype from 
+
+**org.apache.maven.archetypes** **maven-archetype-quickstart**
+
+![A Typical Maven Project Structure](https://github.com/StillSomehowSane/javap1-beans-and-json/blob/main/images/TypicalMaven.PNG)
+
+The image shows a typical maven project structure with the following notable folders:
+- src/main/java : Folder that contains all the Java Classes
+- src/test/java : Folder that contains all the test Classes
+- target        : Our build files are placed under the target folder
+- pom.xml       : Main Project Configuration is placed in the pom.xml file
+
+Further the JRE System Libraries and Maven Dependencies will have the source jar and .class files for all the dependencieds and libraries defined in pom.xml 
 
 ##### Links
 - https://www.baeldung.com/maven
