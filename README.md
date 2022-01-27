@@ -186,6 +186,7 @@ Further the JRE System Libraries and Maven Dependencies will have the source jar
 ### Business Layer: Manipulating JSON using the Jackson Library
 
 Pull Jackson-Databind in as a dependency in our pom.xml file
+
 ``` xml
 <dependency>
   <groupId>com.fasterxml.jackson.core</groupId>
@@ -195,6 +196,7 @@ Pull Jackson-Databind in as a dependency in our pom.xml file
 ```
 
 Basic Usage of the Object Mapper
+
 ``` java
 public class Animal implements Serializable {
 
@@ -246,32 +248,31 @@ public class Animal implements Serializable {
 ```
 
 ``` java
-public class App 
-{
-    public static void main(String[] args)
-    {
-        
-        Animal doggie = new Animal();
-        
-        doggie.setId(1);
-        doggie.setName("Pupper");
-        doggie.setBreed("Husky");
-        doggie.setAge(2);
-        
-        ObjectMapper mapper = new ObjectMapper();
-        
-        try {
+public class App {
+	public static void main(String[] args) {
+
+		Animal doggie = new Animal();
+
+		doggie.setId(1);
+		doggie.setName("Pupper");
+		doggie.setBreed("Husky");
+		doggie.setAge(2);
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
 			String animalJsonified = mapper.writeValueAsString(doggie);
-			
-			 System.out.println(animalJsonified);
+
+			System.out.println(animalJsonified);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 }
 ```
 
 Creating a json array with Jackson
+
 ``` java
 public class App 
 {
@@ -297,10 +298,9 @@ public class App
         Animal[] animals = { doggie, doggo };
         
         try {
-			String animalsJsonified = 
-              mapper.writeValueAsString(animals);
+			String animalsJsonified = mapper.writeValueAsString(animals);
 			
-			 System.out.println(animalsJsonified);
+			System.out.println(animalsJsonified);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

@@ -40,7 +40,7 @@ public class App
         try {
 			String animalsJsonified = mapper.writeValueAsString(animals);
 			
-			 System.out.println(animalsJsonified);
+			System.out.println(animalsJsonified);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
